@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>when will class be over?</title>
+    <style>
+        h1,h2,h3,h4,h5,h6,span,input {
+            font-family:helvetica;
+        }
+    </style>
+</head>
+<body>
+    <h1>when will class be over?</h1>
+    <h3>input a start time and an end time</h3>
+    <input type="time" id="startTime">
+    <progress id="progressBar" value="0" max="100"> class end progress </progress>
+    <span id="percentageTrack"></span>
+    <input type="time" id="endTime">
+    <h3 id="timeRemaining">class ends in</h3>
+    <button id="typMonThur">monday-thursday schedule</button>
+    <br>
+    <button id="typFri">friday schedule</button>
+    <footer>
+        <p>a stupid app developed by kof17</p>
+        <p>copyright 3026</p>
+    </footer>
+    <script>
+        const startTimeInput = document.getElementById('startTime');
+        const endTimeInput = document.getElementById('endTime');
+        const progressBar = document.getElementById('progressBar');
+        const timeRemainingText = document.getElementById('timeRemaining');
+        const percentage = document.getElementById('percentageTrack');
+        const monThurBtn = document.getElementById("typMonThur");
+        const friBtn = document.getElementById("typFri");
+        var d = new Date();
+        var hour = d.getHours();
+        var minutes = d.getMinutes();
+        var seconds = d.getSeconds();
+        monThurBtn.addEventListener("click", function() {
+             
+        });
+        friBtn.addEventListener("click", function() {
+            
+        });
+        function updateProgress() {
+            const startTime = new Date();
+            const endTime = new Date();
+
+            const [startHours, startMinutes] = startTimeInput.value.split(':').map(Number);
+            const [endHours, endMinutes] = endTimeInput.value.split(':').map(Number);
+
+            startTime.setHours(startHours, startMinutes, 0);
+            endTime.setHours(endHours, endMinutes, 0);
+
+            const totalDuration = (endTime - startTime) / 1000; // in seconds
+            const elapsedDuration = (new Date() - startTime) / 1000; // in seconds
+
+            if (totalDuration > 0) {
+                const progressValue = Math.min((elapsedDuration / totalDuration) * 100, 100);
+                percentage.textContent = Math.round(progressValue) + "%"
+                progressBar.value = progressValue;
+                timeRemainingText.textContent = "class ends in " + (totalDuration - elapsedDuration) + " seconds"
+            } else {
+                progressBar.value = 0;
+                percentage.textContent = ""
+                timeRemainingText.textContent = "set a valid time"
+            }
+        }
+
+        setInterval(updateProgress, 1000); // Update every second
+    </script>
+</body>
+</html>
