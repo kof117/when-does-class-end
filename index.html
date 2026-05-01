@@ -60,7 +60,7 @@
                 const progressValue = Math.min((elapsedDuration / totalDuration) * 100, 100);
                 percentage.textContent = Math.round(progressValue) + "%"
                 progressBar.value = progressValue;
-                timeRemainingText.textContent = "class ends in " + (totalDuration - elapsedDuration) + " seconds"
+                timeRemainingText.textContent = "class ends in " + (Math.round(totalDuration - elapsedDuration)) + " seconds"
             } else {
                 progressBar.value = 0;
                 percentage.textContent = ""
