@@ -22,7 +22,6 @@
     <br>
     <button id="typFri">friday schedule</button>
     <br>
-    <span>the auto-fill buttons may not be working right now. i'm working on it</span>
     <footer>
         <p>an app developed by kof117, free and modifiable for non-commerical use.</p>
         <a href="https://github.com/kof117/when-does-class-end">github page</a>
@@ -40,10 +39,64 @@
         var minutes = d.getMinutes();
         var seconds = d.getSeconds();
         monThurBtn.addEventListener("click", function() {
-             
+            var d = new Date();
+            var hour = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+             console.log(hour)
+             console.log(minutes)
+             var time = (hour * 60) + minutes
+             if (time >= 480 && time < 545) {
+                startTimeInput.value = "08:00"
+                endTimeInput.value = "09:05"
+             } else if (time >= 550 && time < 615) {
+                startTimeInput.value = "09:10"
+                endTimeInput.value = "10:15"
+             } else if (time >= 620 && time < 690) {
+                startTimeInput.value = "10:20"
+                endTimeInput.value = "11:30"
+             } else if (time >= 690 && time < 745) {
+                startTimeInput.value = "11:30"
+                endTimeInput.value = "12:25"
+             } else if (time >= 750 && time < 815) {
+                startTimeInput.value = "12:30"
+                endTimeInput.value = "13:35"
+             } else if (time >= 820 && time < 885) {
+                startTimeInput.value = "13:40"
+                endTimeInput.value = "14:45"
+             } else {
+                alert("it's either passing time, or school isn't in session")
+             }
         });
         friBtn.addEventListener("click", function() {
-            
+            var d = new Date();
+            var hour = d.getHours();
+            var minutes = d.getMinutes();
+            var seconds = d.getSeconds();
+            console.log(hour)
+             console.log(minutes)
+             var time = (hour * 60) + minutes
+             if (time >= 480 && time < 535) {
+                startTimeInput.value = "08:00"
+                endTimeInput.value = "08:55"
+             } else if (time >= 540 && time < 595) {
+                startTimeInput.value = "09:00"
+                endTimeInput.value = "09:55"
+             } else if (time >= 600 && time < 660) {
+                startTimeInput.value = "10:00"
+                endTimeInput.value = "11:00"
+             } else if (time >= 660 && time < 690) {
+                startTimeInput.value = "11:00"
+                endTimeInput.value = "11:30"
+             } else if (time >= 695 && time < 750) {
+                startTimeInput.value = "11:35"
+                endTimeInput.value = "12:30"
+             } else if (time >= 755 && time < 810) {
+                startTimeInput.value = "12:35"
+                endTimeInput.value = "13:30"
+             } else {
+                alert("it's either passing time, or school isn't in session")
+             }
         });
         function updateProgress() {
             const startTime = new Date();
